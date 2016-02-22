@@ -1,1 +1,1 @@
-"# go-mathador" 
+# go-mathador
