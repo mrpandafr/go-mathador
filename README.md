@@ -6,4 +6,22 @@ This application has three purpose
   * it appears that if every datas were injected in the Redis db, Redis run out of ram. Must found a strategy not to run out of ram, and keep a fast response
 
 ## Dependencies
+### Externals
+#### Currents
 1. "github.com/gorilla/mux"
+
+#### Futures
+1. "github.com/garyburd/redigo/redis"
+2. "github.com/mattn/go-sqlite3"
+
+### Cores
+#### Currents
+1. "fmt"
+2. "html"
+3. "log"
+4. "net/http"
+
+#### Futures
+1. "database/sql"
+2. "flag"
+3. "os"
