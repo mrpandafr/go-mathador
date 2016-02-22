@@ -2,6 +2,9 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/mrpandafr/go-mathador/gomathadorredis"
+	"github.com/mrpandafr/go-mathador/gomathadorserver"
 )
 
 const (
@@ -17,6 +20,14 @@ const (
 	AuthorEmail = "jeansebastien.saillard@gmail.com"
 )
 
+var (
+	printVersion   bool
+	silent         bool
+	sqliteDatabase string
+	redisHost      string
+	redisPort      string
+)
+
 func appInfo() {
 	fmt.Println("Name    : ", Name)
 	fmt.Println("Version : ", Version)
@@ -30,5 +41,11 @@ func appGoodbye() {
 
 func main() {
 	defer appGoodbye()
+
 	appInfo()
+
+	gomathadorredis.Channel()
+
+	fmt.Print("run web and rest server")
+	gomathadorserver.Routes()
 }
