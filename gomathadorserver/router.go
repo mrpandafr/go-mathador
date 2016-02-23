@@ -25,24 +25,3 @@ func NewRoutes() *mux.Router {
 
 	return router
 }
-
-var routes = Routes{
-	Route{
-		"Index",
-		"GET",
-		"/",
-		index,
-	},
-	Route{
-		"TirageIndex",
-		"GET",
-		"/tirages",
-		tirageIndex,
-	},
-	Route{
-		"TirageShow",
-		"GET",
-		"/tirages/{tirageId}",
-		tirageShow,
-	},
-}
