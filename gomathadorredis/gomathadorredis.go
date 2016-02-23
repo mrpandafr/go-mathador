@@ -9,4 +9,5 @@ func (err Error) Error() string { return string(err) }
 type Channel interface {
 	State(state string) (reply bool, err error)
 	ServiceKey() string
+	Publish(data string) error
 }

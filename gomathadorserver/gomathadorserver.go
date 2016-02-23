@@ -22,7 +22,7 @@ type Server interface {
 func NewServer(c gomathadorredis.Channel) Server {
 	s := &server{
 		Channel: c,
-		router:  NewRoutes(),
+		router:  NewRoutes(c),
 	}
 	return s
 }

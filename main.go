@@ -54,6 +54,7 @@ func main() {
 	if err != nil {
 		fmt.Print(err)
 	}
+	go gomathadorredis.EventListener(webChannel.Psc)
 
 	fmt.Print("run web and rest server")
 	server := gomathadorserver.NewServer(webChannel)
