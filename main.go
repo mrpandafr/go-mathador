@@ -9,7 +9,7 @@ import (
 )
 
 func init() {
-	//url de la base redis
+	//Configure l'environnement pour l'import github.com/soveran/redisurl
 	os.Setenv("REDIS_URL", urlRedis)
 }
 
@@ -24,14 +24,14 @@ const (
 	AuthorName = "Jean-Sébastien Saillard"
 	//AuthorEmail : author email
 	AuthorEmail = "jeansebastien.saillard@gmail.com"
-	//urlRedis : url de la base redis
-	urlRedis = "http://192.168.99.100:6379"
 )
 
 var (
 	printVersion   bool
 	silent         bool
 	sqliteDatabase string
+	//urlRedis : url de la base redis
+	urlRedis = "http://192.168.99.100:6379"
 )
 
 func appInfo() {
@@ -56,6 +56,7 @@ func main() {
 	}
 
 	fmt.Print("run web and rest server")
-	gomathadorserver.NewServer(webChannel)
+	server := gomathadorserver.NewServer(webChannel)
+	server.Start()
 
 }
