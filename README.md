@@ -9,10 +9,10 @@ This application has three purpose
 ### Externals
 #### Currents
 1. "github.com/gorilla/mux"
+2. "github.com/garyburd/redigo/redis"
 
 #### Futures
-1. "github.com/garyburd/redigo/redis"
-2. "github.com/mattn/go-sqlite3"
+1. "github.com/mattn/go-sqlite3"
 
 ### Cores
 #### Currents

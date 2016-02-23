@@ -2,10 +2,16 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/mrpandafr/go-mathador/gomathadorredis"
 	"github.com/mrpandafr/go-mathador/gomathadorserver"
 )
+
+func init() {
+	//url de la base redis
+	os.Setenv("REDIS_URL", urlRedis)
+}
 
 const (
 	//Version : application version
@@ -18,14 +24,14 @@ const (
 	AuthorName = "Jean-Sébastien Saillard"
 	//AuthorEmail : author email
 	AuthorEmail = "jeansebastien.saillard@gmail.com"
+	//urlRedis : url de la base redis
+	urlRedis = "http://192.168.99.100:6379"
 )
 
 var (
 	printVersion   bool
 	silent         bool
 	sqliteDatabase string
-	redisHost      string
-	redisPort      string
 )
 
 func appInfo() {
@@ -44,8 +50,12 @@ func main() {
 
 	appInfo()
 
-	gomathadorredis.Channel()
+	webChannel, err := gomathadorredis.NewChannel("mathador", "web")
+	if err != nil {
+		fmt.Print(err)
+	}
 
 	fmt.Print("run web and rest server")
-	gomathadorserver.Routes()
+	gomathadorserver.NewServer(webChannel)
+
 }
